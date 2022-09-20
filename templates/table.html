@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    History
+{% endblock %}
+
+{% block main %}
+    <table class="table table-striped table-responsive-sm">
+        <thead>
+            <tr>
+                <th class="text-start">Symbol</th>
+                <th class="text-start">Name</th>
+                <th class="text-end">Shares</th>
+                <th class="text-end">Current Price</th>
+                {% block endColumnHeader %}{% endblock %}
+            </tr>
+        </thead>
+        <tbody>
+            {% block endColumnBody %}{% endblock %}
+        </tbody>
+        {% block footer %}{% endblock %}
+    </table>
+{% endblock %}

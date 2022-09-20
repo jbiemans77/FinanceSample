@@ -1,0 +1,52 @@
+{% extends "table.html" %}
+
+{% block title %}
+    Finance
+{% endblock %}
+
+
+{% block endColumnHeader %}
+    <th class="text-end">Total</th>
+{% endblock %}
+
+
+{% block endColumnBody %}
+    {% for stock in stocks %}
+        <tr>
+            <td class="text-start">{{ stock.symbol }}</td>
+            <td class="text-start">{{ stock.name }}</td>
+            <td class="text-end">{{ stock.shares }}</td>
+            <td class="text-end">{{ stock.price }}</td>
+            <td class="text-end">{{ stock.subTotal }}</td>
+            <td>
+                <form action="/buy" method="POST">
+                    <input type="hidden" id="isFromIndex" name="isFromIndex" value="True">
+                    <input type="hidden" id="symbol" name="symbol" value="{{ stock.symbol }}">
+                    <button class="btn btn-primary" type="submit">Buy more</button>
+                </form>
+            </td>
+            <td>
+                <form action="/sell" method="POST">
+                    <input type="hidden" id="isFromIndex" name="isFromIndex" value="True">
+                    <input type="hidden" id="symbol" name="symbol" value="{{ stock.symbol }}">
+                    <button class="btn btn-primary" type="submit">Sell</button>
+                </form>
+            </td>
+        </tr>
+    {% endfor %}
+{% endblock %}
+
+
+{% block footer %}
+    <tfoot>
+        <tr>
+            <td class="border-0 fw-bold text-end" colspan="4">Cash</td>
+            <td class="border-0 text-end">{{ cash }}</td>
+        </tr>
+        <tr>
+            <td class="border-0 fw-bold text-end" colspan="4">TOTAL</td>
+            <td class="border-0 text-end">{{ total }}</td>
+        </tr>
+    </tfoot>
+{% endblock %}
+

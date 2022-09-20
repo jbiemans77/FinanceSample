@@ -1,0 +1,21 @@
+{% extends "table.html" %}
+
+{% block title %}
+    History
+{% endblock %}
+
+{% block endColumnHeader %}
+    <th class="text-end">Purchased</th>
+{% endblock %}
+
+{% block endColumnBody %}
+    {% for stock in stocks %}
+        <tr>
+            <td class="text-start">{{ stock.symbol }}</td>
+            <td class="text-start">{{ stock.name }}</td>
+            <td class="text-end">{{ stock.shares }}</td>
+            <td class="text-end">{{ stock.price }}</td>
+            <td class="text-end">{{ stock.transactionTimeStamp }}</td>
+        </tr>
+    {% endfor %}
+{% endblock %}
